@@ -1,2 +1,2 @@
 # newsForYou
-website designed for viewing daily news 
+Website designed for viewing daily news 
