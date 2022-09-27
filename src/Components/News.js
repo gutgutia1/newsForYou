@@ -35,7 +35,7 @@ export class News extends Component {
   }
 
   handleP = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}s&category=${this.props.category}&apiKey=d9f3d72f8dc948048aab56c9535e1b33&pagesize=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d9f3d72f8dc948048aab56c9535e1b33&pagesize=${
       this.props.pagesize
     }&page=${this.state.page - 1}`;
     this.setState({
