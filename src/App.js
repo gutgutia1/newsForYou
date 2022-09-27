@@ -11,7 +11,6 @@ export default class App extends Component {
       <Router>
         <div>
           <Navbar title="NFU" home="Home" />
-
           <Routes>
             <Route
               exact path="/"

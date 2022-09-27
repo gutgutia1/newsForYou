@@ -35,7 +35,7 @@ export class News extends Component {
   }
 
   handleP = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}s&category=${this.props.category}&apiKey=d9f3d72f8dc948048aab56c9535e1b33&pagesize=${
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d9f3d72f8dc948048aab56c9535e1b33&pagesize=${
       this.props.pagesize
     }&page=${this.state.page - 1}`;
     this.setState({
@@ -71,9 +71,10 @@ export class News extends Component {
   };
 
   render() {
+    document.title=`News for you on ${this.props.category}`
     return (
       <div className="container my-3">
-        <h1 className="text-center">All your news</h1>
+        <h1 className="text-center">News from {this.props.category} category </h1>
         {this.state.loading && <Spinner />}
         <div className="row">
           {!this.state.loading && this.state.article.map((element) => { 
@@ -84,6 +85,8 @@ export class News extends Component {
                   desc={element.description}
                   imgurl={element.urlToImage}
                   url={element.url}
+                  author={element.author}
+                  date={element.publishedAt}
                 ></Newsitem>
               </div>
             );
