@@ -9,7 +9,7 @@ export class Navbar extends Component {
         <nav className="navbar navbar-expand-lg bg-dark">
           <div className="container-fluid">
             <Link className="navbar-brand bg-light" to="/">
-              {title}
+              {title}   
             </Link>
             <button
               className="navbar-toggler"

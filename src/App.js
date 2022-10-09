@@ -19,7 +19,9 @@ export default class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar title="NFU" home="Home" />
+        <Navbar title="NFU" home="Home" />
+        </div>
+        <div>          
           <LoadingBar
             height={3}
             color="#f11946"
@@ -117,7 +119,7 @@ export default class App extends Component {
                 />
               }
             />
-          </Routes>
+          </Routes>  
         </div>
       </Router>
     );

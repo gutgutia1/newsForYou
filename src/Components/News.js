@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Newsitem from "./Newsitem";
 import Spinner from "./Spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
+import ScrollToTop from "./ScrollToTop"
 // import PropTypes from 'prop-types'
 
 export class News extends Component {
@@ -18,6 +19,7 @@ export class News extends Component {
       loading: true,
       page: 1,
       totalResults: 0,
+      visible : false
     };
   }
   async componentDidMount() {
@@ -84,6 +86,20 @@ export class News extends Component {
     }
   };
 
+  toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 300 && !this.state.loading){
+      this.setState({
+        visible:true
+      })
+    } 
+    else if (scrolled <= 300){
+      this.setState({
+        visible:true
+      })
+    }
+  };
+
   fetchMoreData = async () => {
     this.setState({
       page:this.state.page+1
@@ -98,9 +114,10 @@ export class News extends Component {
     });
     
   };
-
+  
   render() {
     document.title = `News for you on ${this.props.category}`;
+    window.addEventListener('scroll', this.toggleVisible);
     return (
       <>
         <h1 className="text-center">
@@ -126,12 +143,14 @@ export class News extends Component {
                     author={element.author}
                     date={element.publishedAt}
                   ></Newsitem>
+                  
                 </div>
               );
             })}
           </div>
           </div>
         </InfiniteScroll>
+        {this.state.visible && <ScrollToTop />}
       </>
     );
   }
